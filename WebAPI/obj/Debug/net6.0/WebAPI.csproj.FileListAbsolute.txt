@@ -31,3 +31,4 @@ C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\FileData.dll
 C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\Application.pdb
 C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\FileData.pdb
 C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\Domain.pdb
+C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\data.json
