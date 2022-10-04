@@ -37,4 +37,21 @@ public class UserFileDao : IUserDao
             users = context.Users.Where(user => user.Username.Contains(searchUserParameters.UsernameContains, StringComparison.OrdinalIgnoreCase));
         return Task.FromResult(users);
     }
+
+    public Task UpdateAsync(UpdateUserParametersDto updateUserParameters)
+    {
+        User? existing = context.Users.FirstOrDefault(user => user.Id == updateUserParameters.Id);
+        if (existing == null)
+            throw new Exception($"User with ID {updateUserParameters.Id} not found!");
+        
+        context.Users.Remove(existing);
+        context.Users.Add(new User
+        {
+            Id = updateUserParameters.Id,
+            Username = updateUserParameters.Username
+        });
+        context.SaveChanges();
+
+        return Task.CompletedTask;
+    }
 }

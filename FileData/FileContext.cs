@@ -5,10 +5,10 @@ namespace FileData;
 
 public class FileContext
 {
-    private const string filePath = "data.json";
+    private const string FilePath = "data.json";
     private DataContainer? dataContainer;
 
-    public ICollection<Post> posts
+    public ICollection<Post> Posts
     {
         get
         {
@@ -29,7 +29,7 @@ public class FileContext
     public void SaveChanges()
     {
         string serialized = JsonSerializer.Serialize(dataContainer, new JsonSerializerOptions{WriteIndented = true});
-        File.WriteAllText(filePath, serialized);
+        File.WriteAllText(FilePath, serialized);
         dataContainer = null;
     }
     
@@ -37,7 +37,7 @@ public class FileContext
     {
         if (dataContainer != null)
             return;
-        if (!File.Exists(filePath))
+        if (!File.Exists(FilePath))
         {
             dataContainer = new()
             {
@@ -47,7 +47,7 @@ public class FileContext
             return;
         }
 
-        string content = File.ReadAllText(filePath);
+        string content = File.ReadAllText(FilePath);
         dataContainer = JsonSerializer.Deserialize<DataContainer>(content);
     }
 }

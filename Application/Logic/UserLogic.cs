@@ -35,4 +35,9 @@ public class UserLogic : IUserLogic
     {
         return userDao.GetAsync(searchUserParameters);
     }
+
+    public Task UpdateAsync(UpdateUserParametersDto updateUserParameters)
+    {
+        return userDao.UpdateAsync(updateUserParameters);
+    }
 }
