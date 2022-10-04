@@ -25,3 +25,9 @@ C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\obj\Debug\net6.0\refint\WebAPI.
 C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\obj\Debug\net6.0\WebAPI.pdb
 C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\obj\Debug\net6.0\WebAPI.genruntimeconfig.cache
 C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\obj\Debug\net6.0\ref\WebAPI.dll
+C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\Application.dll
+C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\Domain.dll
+C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\FileData.dll
+C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\Application.pdb
+C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\FileData.pdb
+C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\Domain.pdb
