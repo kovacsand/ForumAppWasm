@@ -2,6 +2,6 @@
 
 public class User
 {
-    public int id { get; }
-    public string username { get; set; }
+    public int Id { get; }
+    public string Username { get; set; }
 }
