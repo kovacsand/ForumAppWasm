@@ -25,9 +25,14 @@ public class UserFileDao : IUserDao
         return Task.FromResult(user);
     }
 
-    public Task<User?> GetByUsername(string username)
+    public Task<User?> GetByUsernameAsync(string username)
     {
         return Task.FromResult(context.Users.FirstOrDefault(user => user.Username.Equals(username, StringComparison.OrdinalIgnoreCase)));
+    }
+
+    public Task<User?> GetByIdAsync(int id)
+    {
+        return Task.FromResult(context.Users.FirstOrDefault(user => user.Id == id));
     }
 
     public Task<IEnumerable<User>> GetAsync(SearchUserParametersDto searchUserParameters)

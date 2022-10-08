@@ -6,12 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebAPI.Controllers;
 
 [ApiController]
-[Route("controller")]
-public class UserController : ControllerBase
+[Route("[controller]")]
+public class UsersController : ControllerBase
 {
     private readonly IUserLogic userLogic;
 
-    public UserController(IUserLogic userLogic)
+    public UsersController(IUserLogic userLogic)
     {
         this.userLogic = userLogic;
     }
