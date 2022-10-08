@@ -40,4 +40,9 @@ public class UserLogic : IUserLogic
     {
         return userDao.UpdateAsync(updateUserParameters);
     }
+
+    public Task DeleteAsync(int id)
+    {
+        return userDao.DeleteAsync(id);
+    }
 }

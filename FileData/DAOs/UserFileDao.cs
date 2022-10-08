@@ -54,4 +54,16 @@ public class UserFileDao : IUserDao
 
         return Task.CompletedTask;
     }
+
+    public Task DeleteAsync(int id)
+    {
+        User? existing = context.Users.FirstOrDefault(user => user.Id == id);
+        if (existing == null)
+            throw new Exception($"User with id {id} not found!");
+
+        context.Users.Remove(existing);
+        context.SaveChanges();
+
+        return Task.CompletedTask;
+    }
 }
