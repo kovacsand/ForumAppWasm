@@ -29,8 +29,32 @@ public class PostLogic : IPostLogic
         return await postDao.CreateAsync(toCreate);
     }
 
-    public Task<IEnumerable<Post>> GetAsync(SearchPostParametersDto searchPostParameters)
+    public Task<IEnumerable<Post>> GetAsync(PostSearchParametersDto postSearchParameters)
     {
-        return postDao.GetAsync(searchPostParameters);
+        return postDao.GetAsync(postSearchParameters);
+    }
+
+    public async Task UpdateAsync(PostUpdateParametersDto postUpdateParameters)
+    {
+        Post? existing = await postDao.GetByIdAsync(postUpdateParameters.Id);
+        if (existing == null)
+            throw new Exception($"Post with ID {postUpdateParameters.Id} not found!");
+
+        User? author = null;
+        if (postUpdateParameters.AuthorId != null)
+        {
+            author = await userDao.GetByIdAsync(postUpdateParameters.Id);
+            if (author == null)
+                throw new Exception($"User with ID {postUpdateParameters.AuthorId} not found!");
+        }
+        
+        Post updated = new (author ?? existing.Author, postUpdateParameters.Title ?? existing.Title, postUpdateParameters.Body ?? existing.Body)
+        {
+            Id = existing.Id
+        };
+        
+        //TODO validate data here, if neccessary
+
+        await postDao.UpdateAsync(updated);
     }
 }

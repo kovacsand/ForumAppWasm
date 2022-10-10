@@ -36,7 +36,7 @@ public class UsersController : ControllerBase
     {
         try
         {
-            return Ok(await userLogic.GetAsync(new SearchUserParametersDto(username)));
+            return Ok(await userLogic.GetAsync(new UserSearchParametersDto(username)));
         }
         catch (Exception e)
         {
@@ -46,7 +46,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPatch]
-    public async Task<ActionResult> UpdateAsync(UpdateUserParametersDto dto)
+    public async Task<ActionResult> UpdateAsync(UserUpdateParametersDto dto)
     {
         try
         {

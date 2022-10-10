@@ -1,11 +1,11 @@
 ﻿namespace Domain.DTOs;
 
-public class UpdateUserParametersDto
+public class UserUpdateParametersDto
 {
     public int Id { get; }
     public string? Username { get; set; }
 
-    public UpdateUserParametersDto(int id)
+    public UserUpdateParametersDto(int id)
     {
         Id = id;
     }

@@ -36,7 +36,7 @@ public class PostsController : ControllerBase
     {
         try
         {
-            SearchPostParametersDto parameters = new SearchPostParametersDto(authorId, authorName, titleContains, bodyContains);
+            PostSearchParametersDto parameters = new PostSearchParametersDto(authorId, authorName, titleContains, bodyContains);
             return Ok(await postLogic.GetAsync(parameters));
         }
         catch (Exception e)

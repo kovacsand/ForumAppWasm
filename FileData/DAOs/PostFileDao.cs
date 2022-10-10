@@ -25,18 +25,37 @@ public class PostFileDao : IPostDao
         return Task.FromResult(post);
     }
 
-    public Task<IEnumerable<Post>> GetAsync(SearchPostParametersDto searchPostParameters)
+    public Task<IEnumerable<Post>> GetAsync(PostSearchParametersDto postSearchParameters)
     {
         IEnumerable<Post> posts = context.Posts.AsEnumerable();
-        if (!string.IsNullOrEmpty(searchPostParameters.AuthorName))
-            posts = posts.Where(post => post.Author.Username.Equals(searchPostParameters.AuthorName, StringComparison.OrdinalIgnoreCase));
-        if (searchPostParameters.AuthorId != null)
-            posts = posts.Where(post => post.Author.Id == searchPostParameters.AuthorId);
-        if (!string.IsNullOrEmpty(searchPostParameters.TitleContains))
-            posts = posts.Where(post => post.Title.Contains(searchPostParameters.TitleContains, StringComparison.OrdinalIgnoreCase));
-        if (!string.IsNullOrEmpty(searchPostParameters.BodyContains))
-            posts = posts.Where(post => post.Body.Contains(searchPostParameters.BodyContains, StringComparison.OrdinalIgnoreCase));
+        if (!string.IsNullOrEmpty(postSearchParameters.AuthorName))
+            posts = posts.Where(post => post.Author.Username.Equals(postSearchParameters.AuthorName, StringComparison.OrdinalIgnoreCase));
+        if (postSearchParameters.AuthorId != null)
+            posts = posts.Where(post => post.Author.Id == postSearchParameters.AuthorId);
+        if (!string.IsNullOrEmpty(postSearchParameters.TitleContains))
+            posts = posts.Where(post => post.Title.Contains(postSearchParameters.TitleContains, StringComparison.OrdinalIgnoreCase));
+        if (!string.IsNullOrEmpty(postSearchParameters.BodyContains))
+            posts = posts.Where(post => post.Body.Contains(postSearchParameters.BodyContains, StringComparison.OrdinalIgnoreCase));
 
         return Task.FromResult(posts);
+    }
+
+    public Task<Post?> GetByIdAsync(int id)
+    {
+        Post? existing = context.Posts.FirstOrDefault(post => post.Id == id);
+        return Task.FromResult(existing);
+    }
+
+    public Task UpdateAsync(Post post)
+    {
+        Post? existing = context.Posts.FirstOrDefault(foundPost => foundPost.Id == post.Id);
+        if (existing == null)
+            throw new Exception($"Post with ID {post.Id} not found!");
+
+        context.Posts.Remove(existing);
+        context.Posts.Add(post);
+        context.SaveChanges();
+
+        return Task.CompletedTask;
     }
 }

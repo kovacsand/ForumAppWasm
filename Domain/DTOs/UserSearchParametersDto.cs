@@ -1,10 +1,10 @@
 ﻿namespace Domain.DTOs;
 
-public class SearchUserParametersDto
+public class UserSearchParametersDto
 {
     public string? UsernameContains { get; }
 
-    public SearchUserParametersDto(string? usernameContains)
+    public UserSearchParametersDto(string? usernameContains)
     {
         UsernameContains = usernameContains;
     }

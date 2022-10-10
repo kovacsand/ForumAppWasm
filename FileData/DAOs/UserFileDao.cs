@@ -35,25 +35,25 @@ public class UserFileDao : IUserDao
         return Task.FromResult(context.Users.FirstOrDefault(user => user.Id == id));
     }
 
-    public Task<IEnumerable<User>> GetAsync(SearchUserParametersDto searchUserParameters)
+    public Task<IEnumerable<User>> GetAsync(UserSearchParametersDto userSearchParameters)
     {
         IEnumerable<User> users = context.Users.AsEnumerable();
-        if (searchUserParameters.UsernameContains != null)
-            users = context.Users.Where(user => user.Username.Contains(searchUserParameters.UsernameContains, StringComparison.OrdinalIgnoreCase));
+        if (userSearchParameters.UsernameContains != null)
+            users = context.Users.Where(user => user.Username.Contains(userSearchParameters.UsernameContains, StringComparison.OrdinalIgnoreCase));
         return Task.FromResult(users);
     }
 
-    public Task UpdateAsync(UpdateUserParametersDto updateUserParameters)
+    public Task UpdateAsync(UserUpdateParametersDto userUpdateParameters)
     {
-        User? existing = context.Users.FirstOrDefault(user => user.Id == updateUserParameters.Id);
+        User? existing = context.Users.FirstOrDefault(user => user.Id == userUpdateParameters.Id);
         if (existing == null)
-            throw new Exception($"User with ID {updateUserParameters.Id} not found!");
+            throw new Exception($"User with ID {userUpdateParameters.Id} not found!");
         
         context.Users.Remove(existing);
         context.Users.Add(new User
         {
-            Id = updateUserParameters.Id,
-            Username = updateUserParameters.Username
+            Id = userUpdateParameters.Id,
+            Username = userUpdateParameters.Username
         });
         context.SaveChanges();
 

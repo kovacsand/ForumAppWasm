@@ -31,9 +31,9 @@ public class UserLogic : IUserLogic
         return created;
     }
 
-    public Task<IEnumerable<User>> GetAsync(SearchUserParametersDto searchUserParameters)
+    public Task<IEnumerable<User>> GetAsync(UserSearchParametersDto userSearchParameters)
     {
-        return userDao.GetAsync(searchUserParameters);
+        return userDao.GetAsync(userSearchParameters);
     }
 
     public Task<User?> GetByIdAsync(int id)
@@ -41,9 +41,9 @@ public class UserLogic : IUserLogic
         return userDao.GetByIdAsync(id);
     }
 
-    public Task UpdateAsync(UpdateUserParametersDto updateUserParameters)
+    public Task UpdateAsync(UserUpdateParametersDto userUpdateParameters)
     {
-        return userDao.UpdateAsync(updateUserParameters);
+        return userDao.UpdateAsync(userUpdateParameters);
     }
 
     public Task DeleteAsync(int id)
