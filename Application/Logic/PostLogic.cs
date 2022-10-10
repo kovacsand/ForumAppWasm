@@ -57,4 +57,9 @@ public class PostLogic : IPostLogic
 
         await postDao.UpdateAsync(updated);
     }
+
+    public Task DeleteAsync(int id)
+    {
+        return postDao.DeleteAsync(id);
+    }
 }
