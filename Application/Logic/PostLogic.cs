@@ -43,7 +43,7 @@ public class PostLogic : IPostLogic
         User? author = null;
         if (postUpdateParameters.AuthorId != null)
         {
-            author = await userDao.GetByIdAsync(postUpdateParameters.Id);
+            author = await userDao.GetByIdAsync((int)postUpdateParameters.AuthorId);
             if (author == null)
                 throw new Exception($"User with ID {postUpdateParameters.AuthorId} not found!");
         }

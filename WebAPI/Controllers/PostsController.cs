@@ -45,4 +45,19 @@ public class PostsController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
+
+    [HttpPatch]
+    public async Task<ActionResult> UpdateAsync(PostUpdateParametersDto dto)
+    {
+        try
+        {
+            await postLogic.UpdateAsync(dto);
+            return Ok();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+    }
 }
