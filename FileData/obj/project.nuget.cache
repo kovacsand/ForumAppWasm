@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "SGSmZ4aUAOJdfADLhsZ5AAg8WlGukE6ymLVqIGfejtoNl9o/2ZIvDNk36hqH5naKVfJ7wT/Fh80UwM6/2g673w==",
+  "dgSpecHash": "ItEqwiH9FkG9EaPqv2kd5D6xFYOa1zXsGCZ18qaLbQ/lNdk4H233WB3fC38oV4VKbFDdwwgVsoQGlVSqJI+y+g==",
   "success": true,
   "projectFilePath": "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\FileData\\FileData.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\kandr\\.nuget\\packages\\microsoft.aspnetcore.authorization\\6.0.10\\microsoft.aspnetcore.authorization.6.0.10.nupkg.sha512",
+    "C:\\Users\\kandr\\.nuget\\packages\\microsoft.aspnetcore.metadata\\6.0.10\\microsoft.aspnetcore.metadata.6.0.10.nupkg.sha512",
+    "C:\\Users\\kandr\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\kandr\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.2\\microsoft.extensions.logging.abstractions.6.0.2.nupkg.sha512",
+    "C:\\Users\\kandr\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\kandr\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\kandr\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
