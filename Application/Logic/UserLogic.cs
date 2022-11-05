@@ -24,7 +24,9 @@ public class UserLogic : IUserLogic
         
         User toCreate = new User()
         {
-            Username = userToCreate.Username
+            Username = userToCreate.Username,
+            Password = userToCreate.Password,
+            SecurityLevel = 1
         };
 
         User created = await userDao.CreateAsync(toCreate);
