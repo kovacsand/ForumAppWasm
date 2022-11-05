@@ -6,16 +6,18 @@ namespace WebAPI.Services;
 
 public class AuthServiceImpl : IAuthService
 {
-    private readonly IUserLogic userLogic;
-
-    public AuthServiceImpl(IUserLogic userLogic)
+    private readonly IList<User> users = new List<User>()
     {
-        this.userLogic = userLogic;
-    }
+        new User()
+        {
+            Username = "Andras",
+            Password = "1234",
+            SecurityLevel = 2
+        }
+    };
 
     public Task<User> ValidateUser(string username, string password)
     {
-        IEnumerable<User> users = userLogic.GetAsync(new UserSearchParametersDto(username)).Result;
         User? existingUser = users.FirstOrDefault(u => 
             u.Username.Equals(username, StringComparison.OrdinalIgnoreCase));
 

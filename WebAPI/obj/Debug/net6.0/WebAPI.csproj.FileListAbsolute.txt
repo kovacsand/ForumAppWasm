@@ -32,3 +32,13 @@ C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\Application.pd
 C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\FileData.pdb
 C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\Domain.pdb
 C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\data.json
+C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authorization.dll
+C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Metadata.dll
+C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\kandr\RiderProjects\ForumAppWasm\WebAPI\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
