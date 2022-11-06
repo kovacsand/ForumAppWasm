@@ -50,11 +50,6 @@ public class JwtAuthService : IAuthService
         return Task.CompletedTask;
     }
 
-    public Task RegisterAsync(User user)
-    {
-        throw new NotImplementedException();
-    }
-
     public Task<ClaimsPrincipal> GetAuthAsync()
     {
         ClaimsPrincipal principal = CreateClaimsPrincipal();

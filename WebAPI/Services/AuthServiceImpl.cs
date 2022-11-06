@@ -28,9 +28,4 @@ public class AuthServiceImpl : IAuthService
 
         return Task.FromResult(existingUser);
     }
-
-    public Task RegisterUser(User user)
-    {
-        throw new NotImplementedException();
-    }
 }
