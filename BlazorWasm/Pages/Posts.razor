@@ -3,6 +3,7 @@
 @using HttpClients.ClientInterfaces
 
 @inject IPostService postService
+@inject NavigationManager navigationManager
 
 <h3>Posts</h3>
 
@@ -21,13 +22,12 @@ else
             <th>Post ID</th>
             <th>Author</th>
             <th>Title</th>
-            <th>Body</th>
         </tr>
         </thead>
         <tbody>
         @foreach (var post in posts)
         {
-            <tr>
+            <tr onclick="@(() => navigationManager.NavigateTo($"Posts/{post.Id}"))">
                 <td>@post.Id</td>
                 <td>@post.Author.Username</td>
                 <td>@post.Title</td>
@@ -55,6 +55,20 @@ else
         try
         {
             posts = await postService.GetAsync(null, null, null, null);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            message = e.Message;
+        }
+    }
+
+    private async Task OpenDetails(int id)
+    {
+        try
+        {
+            await postService.GetByIdAsync(id);
+            navigationManager.NavigateTo($"/Posts/{id}");
         }
         catch (Exception e)
         {

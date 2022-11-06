@@ -29,9 +29,18 @@ public class PostLogic : IPostLogic
         return await postDao.CreateAsync(toCreate);
     }
 
-    public Task<IEnumerable<Post>> GetAsync(PostSearchParametersDto postSearchParameters)
+    public async Task<IEnumerable<Post>> GetAsync(PostSearchParametersDto postSearchParameters)
     {
-        return postDao.GetAsync(postSearchParameters);
+        return await postDao.GetAsync(postSearchParameters);
+    }
+
+    public async Task<Post> GetByIdAsync(int id)
+    {
+        Post? post = await postDao.GetByIdAsync(id);
+        if (post == null)
+            throw new Exception($"Post with  id {id} not found!");
+
+        return post;
     }
 
     public async Task UpdateAsync(PostUpdateParametersDto postUpdateParameters)

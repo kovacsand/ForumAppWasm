@@ -1,0 +1,59 @@
+﻿@page "/Posts/{id:int}"
+@using HttpClients.ClientInterfaces
+@using Domain
+
+@inject IPostService postService
+
+<h3>PostDetails</h3>
+
+@if (post == null)
+{
+    <p>No Post to display</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Post ID</th>
+            <th>Author</th>
+            <th>Title</th>
+            <th>Body</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>@post.Id</td>
+            <td>@post.Author.Username</td>
+            <td>@post.Title</td>
+            <td>@post.Body</td>
+        </tr>
+        </tbody>
+    </table>
+}
+@if (!string.IsNullOrEmpty(message))
+{
+    <label style="color: red">@message</label>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+    
+    private Post? post = null;
+    private string message = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            post = await postService.GetByIdAsync(Id);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            message = e.Message;
+        }
+    }
+
+}

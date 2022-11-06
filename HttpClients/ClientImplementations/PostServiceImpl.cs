@@ -35,8 +35,14 @@ public class PostServiceImpl : IPostService
         return posts;
     }
 
-    public Task<Post> GetByIdAsync()
+    public async Task<Post> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        HttpResponseMessage response = await client.GetAsync($"posts/{id}");
+        string result = await response.Content.ReadAsStringAsync();
+        if (!response.IsSuccessStatusCode)
+            throw new Exception(result);
+
+        Post post = JsonSerializer.Deserialize<Post>(result, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
+        return post;
     }
 }
