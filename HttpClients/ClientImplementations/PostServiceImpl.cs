@@ -1,4 +1,5 @@
 ﻿using System.Net.Http.Json;
+using System.Text.Json;
 using Domain;
 using Domain.DTOs;
 using HttpClients.ClientInterfaces;
@@ -22,9 +23,16 @@ public class PostServiceImpl : IPostService
             throw new Exception(result);
     }
 
-    public Task<IEnumerable<Post>> GetAsync()
+    public async Task<IEnumerable<Post>> GetAsync(int? authorId, string? authorName, string? titleContains, string? bodyContains)
     {
-        throw new NotImplementedException();
+        HttpResponseMessage response = await client.GetAsync("/posts");
+        string result = await response.Content.ReadAsStringAsync();
+        if (!response.IsSuccessStatusCode)
+            throw new Exception(result);
+
+        ICollection<Post> posts = JsonSerializer.Deserialize<ICollection<Post>>(result,
+            new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
+        return posts;
     }
 
     public Task<Post> GetByIdAsync()
