@@ -7,14 +7,14 @@
 <AuthorizeView>
     <NotAuthorized>
         <div class="card">
-            <h3>Please login</h3>
+            <h3>Log in</h3>
             <div class="field">
-                <label>User name:</label>
+                <label>Username:</label>
                 <input type="text" @bind="username"/>
             </div>
             <div class="field">
-                <label style="text-align: center">Password:</label>
-                <input type="password" @bind="password"/>
+                <label>Password:</label>
+                <input type="password" @onkeyup="@EnterPressed" @bind="password"/>
             </div>
             @if (!string.IsNullOrEmpty(errorLabel))
             {
@@ -25,7 +25,7 @@
                 </div>
             }
             <div class="field">
-                <button class="loginbtn" @onclick="LoginAsync">Log in</button>
+                <Button Color="Color.Primary" Clicked="LoginAsync">Log in</Button>
             </div>
         </div>
     </NotAuthorized>
@@ -47,7 +47,7 @@
         try
         {
             await authService.LoginAsync(username, password);
-            navMgr.NavigateTo("/");
+            navMgr.NavigateTo("/Posts");
         }
         catch (Exception e)
         {
@@ -56,4 +56,9 @@
         }
     }
 
+    private void EnterPressed(KeyboardEventArgs e)
+    {
+        if (e.Code == "Enter")
+            LoginAsync();
+    }
 }

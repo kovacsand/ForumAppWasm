@@ -1,20 +1,75 @@
 ﻿@inherits LayoutComponentBase
 @using Login
+@using BlazorWasm.Services.Http
+
+@inject NavigationManager navMgr
+@inject IAuthService authService
 
 <div class="page">
-    <div class="sidebar">
-        <NavMenu/>
-    </div>
 
     <main>
-        <div class="top-row px-4">
-            <a href="CreatePost"><button>Post</button></a>
-            <a href="CreateUser"><button>Register</button></a>
-            <LoginButtons/>
-        </div>
+        <Bar Breakpoint="Breakpoint.Desktop"
+             Background="Background.Light"
+             ThemeContrast="ThemeContrast.Light"
+             Flex="Flex.JustifyContent.Between">
+            <Div>
+                <Link To="Posts" style="text-decoration: none">
+                    <Heading Size="HeadingSize.Is3" Style="display: inline; color: #FCA311">1337<span style="color: #14213D">r</span></Heading>
+                </Link>
+            </Div>
+            <Div>
+                <BarToggler/>
+                <BarMenu>
+                    <BarEnd>
+                        <BarItem>
+                            <AuthorizeView>
+                                <Buttons Role="ButtonsRole.Toolbar">
+                                    <Buttons Margin="Margin.Is2.OnX">
+                                        <Authorized>
+                                            <Button Color="Color.Primary" Type="ButtonType.Link" To="CreatePost">Post</Button>
+                                        </Authorized>
+                                    </Buttons>
+                                </Buttons>
+                            </AuthorizeView>
+                        </BarItem>
+                        <BarItem>
+                            <Buttons Role="ButtonsRole.Toolbar">
+                                <Buttons Margin="Margin.Is2.OnX">
+                                    <Button Color="Color.Light" Type="ButtonType.Link" To="CreateUser">Register</Button>
+                                    <AuthorizeView>
+                                        <Authorized>
+                                            <Button Color="Color.Dark" Type="ButtonType.Link" Clicked="Logout">Log out</Button>
+                                        </Authorized>
+                                        <NotAuthorized>
+                                            <Button Color="Color.Dark" Type="ButtonType.Link" Clicked="Login">Login</Button>
+                                        </NotAuthorized>
+                                    </AuthorizeView>
+                                </Buttons>
+                            </Buttons>
+                        </BarItem>
+                    </BarEnd>
+                </BarMenu>
+            </Div>
+        </Bar>
+
 
         <article class="content px-4">
             @Body
         </article>
     </main>
 </div>
+
+@code {
+
+    private void Login()
+    {
+        navMgr.NavigateTo("/Login");
+    }
+
+    private async Task Logout()
+    {
+        await authService.LogoutAsync();
+        navMgr.NavigateTo("/Posts");
+    }
+
+}

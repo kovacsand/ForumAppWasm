@@ -1,22 +1,31 @@
 ﻿@page "/CreateUser"
 @using Domain.DTOs
 @using HttpClients.ClientInterfaces
+@using BlazorWasm.Services.Http
+@inject IAuthService authService
 @inject IUserService userService
+@inject NavigationManager navMgr
 
 <div class="card">
-    <h3>Create User</h3>
-    <div class="form-group field">
+    <h3>Register</h3>
+    <div class="field">
         <label>Username:</label>
         <input type="text" @bind="username" @bind:event="oninput"/>
-        <label>Password:</label>
-        <input type="password" @bind="password" @bind:event="oninput"/>
-        @if (!string.IsNullOrEmpty(resultMsg))
-        {
-            <label style="color: @color">@resultMsg</label>
-        }
     </div>
-    <div class="button-row">
-        <button @onclick="Create" disabled="@(string.IsNullOrEmpty(username))" class="acceptbtn">Create</button>
+    <div class="field">
+        <label>Password:</label>
+        <input type="password" @onkeyup="@EnterPressed" @bind="password" @bind:event="oninput"/>
+    </div>
+    @if (!string.IsNullOrEmpty(resultMsg))
+    {
+        <div class="field">
+            <label style="color: @color">
+                @resultMsg
+            </label>
+        </div>
+    }
+    <div class="field">
+        <Button Color="Color.Primary" Clicked="Create">Register</Button>
     </div>
 </div>
 
@@ -25,7 +34,7 @@
     private string password = "";
     private string resultMsg = "";
     private string color = "";
-    
+
     private async Task Create()
     {
         resultMsg = "";
@@ -33,6 +42,9 @@
         try
         {
             await userService.CreateAsync(new UserCreationDto(username, password));
+            await authService.LoginAsync(username, password);
+            navMgr.NavigateTo("/Posts");
+            
             username = "";
             password = "";
             resultMsg = "User successfully created";
@@ -44,5 +56,11 @@
             resultMsg = e.Message;
             color = "red";
         }
+    }
+
+    private void EnterPressed(KeyboardEventArgs e)
+    {
+        if (e.Code == "Enter")
+            Create();
     }
 }
