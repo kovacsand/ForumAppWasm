@@ -1,0 +1,8 @@
+﻿tr:hover {
+    background-color: #E5E5E5;
+    cursor: pointer;
+}
+thead tr:hover{
+    cursor: default;
+    background-color: white;
+}

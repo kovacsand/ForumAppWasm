@@ -5,21 +5,24 @@
 @inject IPostService postService
 @inject NavigationManager navigationManager
 
-<h3>Posts</h3>
+<AuthorizeView>
+    <Authorized>
+        <h3>Welcome back, @context.User.Identity.Name!</h3>
+    </Authorized>
+</AuthorizeView>
 
 @if (posts == null)
 {
 }
 else if (!posts.Any())
 {
-    <p>No Todos to display</p>
+    <p>No Posts to display</p>
 }
 else
 {
     <table class="table">
         <thead>
         <tr>
-            <th>Post ID</th>
             <th>Author</th>
             <th>Title</th>
         </tr>
@@ -28,7 +31,6 @@ else
         @foreach (var post in posts)
         {
             <tr onclick="@(() => navigationManager.NavigateTo($"Posts/{post.Id}"))">
-                <td>@post.Id</td>
                 <td>@post.Author.Username</td>
                 <td>@post.Title</td>
             </tr>
@@ -55,20 +57,6 @@ else
         try
         {
             posts = await postService.GetAsync(null, null, null, null);
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            message = e.Message;
-        }
-    }
-
-    private async Task OpenDetails(int id)
-    {
-        try
-        {
-            await postService.GetByIdAsync(id);
-            navigationManager.NavigateTo($"/Posts/{id}");
         }
         catch (Exception e)
         {

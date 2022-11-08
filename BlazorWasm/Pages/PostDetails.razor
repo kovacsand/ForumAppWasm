@@ -4,32 +4,24 @@
 
 @inject IPostService postService
 
-<h3>PostDetails</h3>
-
 @if (post == null)
 {
     <p>No Post to display</p>
 }
 else
 {
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Post ID</th>
-            <th>Author</th>
-            <th>Title</th>
-            <th>Body</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>@post.Id</td>
-            <td>@post.Author.Username</td>
-            <td>@post.Title</td>
-            <td>@post.Body</td>
-        </tr>
-        </tbody>
-    </table>
+    <Button Color="Color.Dark" Type="ButtonType.Link" To="/Posts" Margin="Margin.Is2.FromBottom">Back</Button>
+    
+    <Jumbotron Background="Background.Light" Margin="Margin.Is4.FromBottom">
+        <JumbotronTitle Size="JumbotronTitleSize.Is4">@post.Title</JumbotronTitle>
+        <JumbotronSubtitle>
+            By: @post.Author.Username
+        </JumbotronSubtitle>
+        <Divider></Divider>
+        <Paragraph>
+            @post.Body
+        </Paragraph>
+    </Jumbotron>
 }
 @if (!string.IsNullOrEmpty(message))
 {
