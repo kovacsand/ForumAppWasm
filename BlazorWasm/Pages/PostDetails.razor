@@ -19,7 +19,15 @@ else
         </JumbotronSubtitle>
         <Divider></Divider>
         <Paragraph>
-            @post.Body
+            <AuthorizeView>
+                <Authorized>
+                    @post.Body;
+                </Authorized>
+                <NotAuthorized>
+                    @LeetText(post.Body);
+                </NotAuthorized>
+            </AuthorizeView>
+            
         </Paragraph>
     </Jumbotron>
 }
@@ -48,4 +56,50 @@ else
         }
     }
 
+
+    private string LeetText(string text)
+    {
+        Dictionary<char, string> translator = new Dictionary<char, string>
+        {
+            {'a', "4"},
+            {'b', "6"},
+            {'c', "("},
+            {'d', "[)"},    
+            {'e', "3"},
+            {'f', "|="},
+            {'g', "9"},
+            {'h', "|-|"},
+            {'i', "!"},
+            {'j', "_|"},
+            {'k', "]{"},
+            {'l', "1"},
+            {'m', "|\\/|"},
+            {'n', "|\\|"},
+            {'o', "0"},
+            {'p', "|°"},
+            {'q', "(,)"},
+            {'r', "1²"},
+            {'s', "5"},
+            {'t', "7"},
+            {'u', "(_)"},
+            {'v', "\\/"},
+            {'w', "'//"},
+            {'x', "><"},
+            {'y', "'/"},
+            {'z', "7_"},
+        };
+
+        string leeted = text.ToLower();
+        string result = "";
+        foreach (char c  in leeted)
+        {
+            if (translator.ContainsKey(c))
+                result += translator[c];
+            else
+                result += c;
+        }
+
+        return result;
+    }
+    
 }
