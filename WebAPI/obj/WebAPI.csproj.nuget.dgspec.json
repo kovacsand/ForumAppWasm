@@ -120,6 +120,63 @@
         }
       }
     },
+    "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\EfcDataAccess\\EfcDataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\EfcDataAccess\\EfcDataAccess.csproj",
+        "projectName": "EfcDataAccess",
+        "projectPath": "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\EfcDataAccess\\EfcDataAccess.csproj",
+        "packagesPath": "C:\\Users\\kandr\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\EfcDataAccess\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\kandr\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\Application\\Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\FileData\\FileData.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -204,6 +261,9 @@
             "projectReferences": {
               "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\Application\\Application.csproj": {
                 "projectPath": "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\Application\\Application.csproj"
+              },
+              "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\EfcDataAccess\\EfcDataAccess.csproj": {
+                "projectPath": "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\EfcDataAccess\\EfcDataAccess.csproj"
               },
               "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\FileData\\FileData.csproj": {
                 "projectPath": "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\FileData\\FileData.csproj"

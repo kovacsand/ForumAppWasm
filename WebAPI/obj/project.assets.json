@@ -373,6 +373,19 @@
           "bin/placeholder/Domain.dll": {}
         }
       },
+      "EfcDataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/EfcDataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EfcDataAccess.dll": {}
+        }
+      },
       "FileData/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -971,6 +984,11 @@
       "path": "../Domain/Domain.csproj",
       "msbuildProject": "../Domain/Domain.csproj"
     },
+    "EfcDataAccess/1.0.0": {
+      "type": "project",
+      "path": "../EfcDataAccess/EfcDataAccess.csproj",
+      "msbuildProject": "../EfcDataAccess/EfcDataAccess.csproj"
+    },
     "FileData/1.0.0": {
       "type": "project",
       "path": "../FileData/FileData.csproj",
@@ -980,6 +998,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "Application >= 1.0.0",
+      "EfcDataAccess >= 1.0.0",
       "FileData >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.10",
       "Swashbuckle.AspNetCore >= 6.2.3"
@@ -1012,6 +1031,9 @@
           "projectReferences": {
             "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\Application\\Application.csproj": {
               "projectPath": "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\Application\\Application.csproj"
+            },
+            "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\EfcDataAccess\\EfcDataAccess.csproj": {
+              "projectPath": "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\EfcDataAccess\\EfcDataAccess.csproj"
             },
             "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\FileData\\FileData.csproj": {
               "projectPath": "C:\\Users\\kandr\\RiderProjects\\ForumAppWasm\\FileData\\FileData.csproj"
