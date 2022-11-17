@@ -3,6 +3,7 @@ using Application.DaoInterfaces;
 using Application.Logic;
 using Application.LogicInterfaces;
 using Domain.Auth;
+using EfcDataAccess;
 using EfcDataAccess.DAOs;
 using FileData;
 using FileData.DAOs;
@@ -26,6 +27,8 @@ builder.Services.AddScoped<IPostDao, PostEfcDao>();
 builder.Services.AddScoped<IPostLogic, PostLogic>();
 
 builder.Services.AddScoped<IAuthService, AuthServiceImpl>();
+
+builder.Services.AddDbContext<DatabaseContext>();
 
 //Add authentication with info about JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>

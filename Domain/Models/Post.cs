@@ -2,6 +2,10 @@
 
 public class Post
 {
+    private Post()
+    {
+    }
+
     public Post(User author, string title, string body)
     {
         Author = author;
