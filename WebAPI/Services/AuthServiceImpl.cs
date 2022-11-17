@@ -1,22 +1,22 @@
 ﻿using Application.LogicInterfaces;
 using Domain;
 using Domain.DTOs;
-using FileData;
+using EfcDataAccess;
 
 namespace WebAPI.Services;
 
 public class AuthServiceImpl : IAuthService
 {
-    private readonly FileContext context;
+    private readonly DatabaseContext context;
 
-    public AuthServiceImpl(FileContext context)
+    public AuthServiceImpl(DatabaseContext context)
     {
         this.context = context;
     }
 
     public Task<User> ValidateUser(string username, string password)
     {
-        List<User> users = (List<User>)context.Users;
+        List<User> users = context.Users.ToList();
         User? existingUser = users.FirstOrDefault(u => 
             u.Username.Equals(username, StringComparison.OrdinalIgnoreCase));
 

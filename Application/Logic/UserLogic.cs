@@ -43,9 +43,22 @@ public class UserLogic : IUserLogic
         return userDao.GetByIdAsync(id);
     }
 
-    public Task UpdateAsync(UserUpdateParametersDto userUpdateParameters)
+    public async Task UpdateAsync(UserUpdateParametersDto userUpdateParameters)
     {
-        return userDao.UpdateAsync(userUpdateParameters);
+        User? existing = await userDao.GetByIdAsync(userUpdateParameters.Id);
+        if (existing == null)
+            throw new Exception($"Todo with ID {userUpdateParameters.Id} not found!");
+        
+        string usernameToUse = userUpdateParameters.Username ?? existing.Username;
+        
+        User updated = new ()
+        {
+            Id = existing.Id,
+            Username = usernameToUse,
+            Password = existing.Password
+        };
+        
+        await userDao.UpdateAsync(updated);
     }
 
     public Task DeleteAsync(int id)
